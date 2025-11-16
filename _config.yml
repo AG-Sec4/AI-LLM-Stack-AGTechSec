@@ -1,3 +1,19 @@
 theme: jekyll-theme-cayman
-title: AI-LLM-Stack-AGTechSec Docs
-description: Official documentation for AG-TechSec's AI LLM Stack
+markdown: GFM
+plugins: []
+exclude:
+  - "*.yml"
+  - "*.yaml"
+  - "*.sh"
+  - "scripts/"
+  - "systemd/"
+  - "etc/"
+  - "diagrams/"
+  - "all/"
+  - "LICENSE"
+  - "README.md"
+  - "INSTALLATION.md"
+  - "TROUBLESHOOTING.md"
+  - "OVERVIEW.md"
+  - ".github/"
+
