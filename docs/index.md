@@ -1,11 +1,41 @@
-# AG-TechSec AI LLM Stack — Documentation
+# 📘 AG-TechSec — AI LLM Stack Documentation
 
-Welcome to the official documentation site for **AI-LLM-Stack-AGTechSec**.
+Welcome to the official documentation for the **AI-LLM-Stack-AGTechSec** project.
 
-## 📌 Sections
-- Overview
-- Installation
-- Architecture
-- Security
-- Troubleshooting
-- Roadmap
+This site contains:
+
+## 📑 Sections
+- **Overview** – System summary and goals  
+- **Architecture** – Full diagrams and component flow  
+- **Installation** – Step-by-step deployment  
+- **Security Model** – Hardened configuration  
+- **Scripts** – Automation and tooling  
+- **Nginx Configuration** – SSL, headers, rate limits  
+- **Systemd Services** – Reboot-safe design  
+- **Troubleshooting** – Common fixes  
+- **Roadmap** – Future improvements  
+
+---
+
+# 🚀 About the Project
+
+This stack powers:
+
+- **mychatgpt.pl** — LLM chat (OpenWebUI + Ollama)  
+- **ai.mychatgpt.pl** — Image generation (InvokeAI + SDXL)
+
+All running on a secure, GPU-accelerated Ubuntu server designed by **AG-TechSec**.
+
+---
+
+# 🧱 Architecture Diagram
+
+```mermaid
+flowchart TD
+    A[User Browser] -->|HTTPS| B[Nginx Reverse Proxy]
+    B --> C[OpenWebUI (Chat)]
+    B --> D[InvokeAI (Images)]
+    C --> E[Ollama GPU LLM Engine]
+    D --> F[SDXL GPU Engine]
+    E --> G[NVMe Model Store]
+    F --> G
