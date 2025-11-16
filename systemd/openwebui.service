@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenWebUI Service
+After=docker.service network-online.target
+Wants=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a openwebui
+ExecStop=/usr/bin/docker stop openwebui
+
+[Install]
+WantedBy=multi-user.target

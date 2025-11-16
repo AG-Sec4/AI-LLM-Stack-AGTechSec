@@ -1,0 +1,11 @@
+[Unit]
+Description=Nginx Auto-Restart Watchdog
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/nginx_watchdog.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

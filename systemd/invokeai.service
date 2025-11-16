@@ -1,0 +1,12 @@
+[Unit]
+Description=InvokeAI Service
+After=docker.service network-online.target
+Wants=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a invokeai
+ExecStop=/usr/bin/docker stop invokeai
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+[Unit]
+Description=Ollama LLM Service
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/ollama serve
+WorkingDirectory=/usr/share/ollama
+User=root
+
+[Install]
+WantedBy=multi-user.target

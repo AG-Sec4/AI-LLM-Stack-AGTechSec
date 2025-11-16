@@ -1,0 +1,11 @@
+# Ignore system files
+*.swp
+*.tmp
+*.log
+
+# Ignore OS metadata
+.DS_Store
+
+# Ignore Python cache (if ever used)
+__pycache__/
+

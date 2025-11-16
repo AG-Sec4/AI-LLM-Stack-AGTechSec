@@ -1,0 +1,9 @@
+
+flowchart TD
+    A[User Browser] -->|HTTPS| B[Nginx Reverse Proxy]
+    B --> C[OpenWebUI Container]
+    B --> D[InvokeAI Container]
+    C --> E[Ollama GPU Backend]
+    D --> F[SDXL GPU Engine]
+    E --> G[NVMe Model Storage]
+    F --> G
