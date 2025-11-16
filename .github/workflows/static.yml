@@ -1,41 +1,41 @@
-# 📘 AG-TechSec — AI LLM Stack Documentation
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
-Welcome to the official documentation for the **AI-LLM-Stack-AGTechSec** project.
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
-This site contains:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-## 📑 Sections
-- **Overview** – System summary and goals  
-- **Architecture** – Full diagrams and component flow  
-- **Installation** – Step-by-step deployment  
-- **Security Model** – Hardened configuration  
-- **Scripts** – Automation and tooling  
-- **Nginx Configuration** – SSL, headers, rate limits  
-- **Systemd Services** – Reboot-safe design  
-- **Troubleshooting** – Common fixes  
-- **Roadmap** – Future improvements  
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
----
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-# 🚀 About the Project
+    runs-on: ubuntu-latest
 
-This stack powers:
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-- **mychatgpt.pl** — LLM chat (OpenWebUI + Ollama)  
-- **ai.mychatgpt.pl** — Image generation (InvokeAI + SDXL)
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-All running on a secure, GPU-accelerated Ubuntu server engineered by **AG-TechSec**.
+      - name: Upload docs folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
 
----
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
-# 🧱 Architecture Diagram
-
-```mermaid
-flowchart TD
-    A[User Browser] -->|HTTPS| B[Nginx Reverse Proxy]
-    B --> C[OpenWebUI (Chat)]
-    B --> D[InvokeAI (Images)]
-    C --> E[Ollama GPU LLM Engine]
-    D --> F[SDXL GPU Engine]
-    E --> G[NVMe Model Store]
-    F --> G
